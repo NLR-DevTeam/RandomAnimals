@@ -1,5 +1,7 @@
-package org.example.mirai.plugin;
+package cn.whitrayhb.randomanimal;
 
+import cn.whitrayhb.randomanimal.command.RandomCat;
+import net.mamoe.mirai.console.command.CommandManager;
 import net.mamoe.mirai.console.plugin.jvm.JavaPlugin;
 import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescription;
 import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescriptionBuilder;
@@ -26,17 +28,19 @@ import net.mamoe.mirai.event.events.GroupMessageEvent;
  * 不用复制到 mirai-console-loader 或其他启动器中调试
  */
 
-public final class JavaPluginMain extends JavaPlugin {
-    public static final JavaPluginMain INSTANCE = new JavaPluginMain();
-    private JavaPluginMain() {
-        super(new JvmPluginDescriptionBuilder("org.example.mirai-example", "0.1.0")
+public final class RandomAnimalMain extends JavaPlugin {
+    public static final RandomAnimalMain INSTANCE = new RandomAnimalMain();
+    private RandomAnimalMain() {
+        super(new JvmPluginDescriptionBuilder("cn.whitrayhb.randomanimal", "0.1.0")
                 .info("EG")
                 .build());
     }
 
     @Override
     public void onEnable() {
-        getLogger().info("日志");
+        getLogger().info("Random Animal Initialized!");
+        CommandManager.INSTANCE.registerCommand(RandomCat.INSTANCE,true);
+        /*
         EventChannel<Event> eventChannel = GlobalEventChannel.INSTANCE.parentScope(this);
         eventChannel.subscribeAlways(GroupMessageEvent.class, g -> {
             //监听群消息
@@ -47,5 +51,6 @@ public final class JavaPluginMain extends JavaPlugin {
             //监听好友消息
             getLogger().info(f.getMessage().contentToString());
         });
+        */
     }
 }
