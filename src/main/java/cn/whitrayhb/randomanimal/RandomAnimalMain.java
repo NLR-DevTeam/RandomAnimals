@@ -2,6 +2,7 @@ package cn.whitrayhb.randomanimal;
 
 import cn.whitrayhb.randomanimal.command.RandomCat;
 import cn.whitrayhb.randomanimal.command.RandomDog;
+import cn.whitrayhb.randomanimal.command.RandomFox;
 import net.mamoe.mirai.console.command.CommandManager;
 import net.mamoe.mirai.console.plugin.jvm.JavaPlugin;
 import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescription;
@@ -42,6 +43,7 @@ public final class RandomAnimalMain extends JavaPlugin {
         getLogger().info("Random Animal Initialized!");
         CommandManager.INSTANCE.registerCommand(RandomCat.INSTANCE,true);
         CommandManager.INSTANCE.registerCommand(RandomDog.INSTANCE,true);
+        CommandManager.INSTANCE.registerCommand(RandomFox.INSTANCE,true);
         /*
         EventChannel<Event> eventChannel = GlobalEventChannel.INSTANCE.parentScope(this);
         eventChannel.subscribeAlways(GroupMessageEvent.class, g -> {
