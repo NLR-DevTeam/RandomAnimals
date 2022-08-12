@@ -12,6 +12,6 @@
 #API
 -
 
-- 猫猫 random.cat
+- 猫猫 thecatapi.com <- random.cat
 - 狗狗 random.dog
 - 狐狐 randomfox.ca
