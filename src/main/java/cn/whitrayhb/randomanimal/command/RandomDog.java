@@ -1,10 +1,18 @@
 package cn.whitrayhb.randomanimal.command;
 
 import cn.whitrayhb.randomanimal.RandomAnimalMain;
+import cn.whitrayhb.randomanimal.data.CatData;
+import cn.whitrayhb.randomanimal.data.DogData;
+import cn.whitrayhb.randomanimal.data.FetchPicture;
 import net.mamoe.mirai.console.command.CommandSender;
 import net.mamoe.mirai.console.command.java.JRawCommand;
+import net.mamoe.mirai.message.data.Image;
 import net.mamoe.mirai.message.data.MessageChain;
+import net.mamoe.mirai.utils.ExternalResource;
 import org.jetbrains.annotations.NotNull;
+
+import java.io.File;
+import java.io.IOException;
 
 public class RandomDog extends JRawCommand {
 
@@ -19,11 +27,35 @@ public class RandomDog extends JRawCommand {
 
     @Override
     public void onCommand(@NotNull CommandSender sender, @NotNull MessageChain args) {
-        sender.sendMessage(buildMessage());
-    }
-
-    private MessageChain buildMessage(){
-
-        return null;
+        sender.sendMessage("稍等……狗狗正在跑步前进!");
+        String savePath;
+        String url;
+        String path;
+        do {
+            savePath = "./data/cn.whitrayhb.randomanimal/cache/dog";
+            url = DogData.getUrl();
+            path = FetchPicture.fetchPicture(url, savePath);
+            if (path == null) {
+                RandomAnimalMain.INSTANCE.getLogger().error("Image path is null");
+                sender.sendMessage("狗狗迷路了……或许可以再试一次？");
+                return;
+            }
+        }while(url.endsWith(".mp4"));
+        File file = new File(path);
+        if(sender.getSubject()!=null) {
+            if(url.endsWith(".mp4")) ;
+            else{
+                ExternalResource resource = ExternalResource.create(file);
+                Image image = sender.getSubject().uploadImage(resource);
+                sender.sendMessage(image);
+                try {
+                    resource.close();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }else{
+            sender.sendMessage("Subject is null, don't run this command in console");
+        }
     }
 }

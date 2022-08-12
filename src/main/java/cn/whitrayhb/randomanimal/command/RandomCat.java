@@ -10,6 +10,7 @@ import net.mamoe.mirai.utils.ExternalResource;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.io.IOException;
 
 public class RandomCat extends JRawCommand {
 
@@ -25,7 +26,9 @@ public class RandomCat extends JRawCommand {
     @Override
     public void onCommand(@NotNull CommandSender sender, @NotNull MessageChain args) {
         sender.sendMessage("稍等……猫猫正在跑步前进!");
-        String path = FetchPicture.fetchPicture(CatData.decodeJson(),"./data/cn.whitrayhb.randomanimal/cache/cat");
+        String savePath = "./data/cn.whitrayhb.randomanimal/cache/cat";
+        String url = CatData.getUrl();
+        String path = FetchPicture.fetchPicture(url,savePath);
         if(path==null) {
             RandomAnimalMain.INSTANCE.getLogger().error("Image path is null");
             sender.sendMessage("猫猫迷路了……或许可以再试一次？");
@@ -33,8 +36,14 @@ public class RandomCat extends JRawCommand {
         }
         File file = new File(path);
         if(sender.getSubject()!=null) {
-            Image image = sender.getSubject().uploadImage(ExternalResource.create(file));
+            ExternalResource resource = ExternalResource.create(file);
+            Image image = sender.getSubject().uploadImage(resource);
             sender.sendMessage(image);
+            try {
+                resource.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }else{
             sender.sendMessage("Subject is null, don't run this command in console");
         }
