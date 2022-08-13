@@ -37,7 +37,7 @@ public class RandomDog extends JRawCommand {
             path = FetchPicture.fetchPicture(url, savePath);
             if (path == null) {
                 RandomAnimalMain.INSTANCE.getLogger().error("图片路径为空");
-                sender.sendMessage("狗狗迷路了……或许可以再试一次？");
+                sender.sendMessage("狗狗被路边的标志牌吸引住了……或许可以再试一次？");
                 return;
             }
         }while(url.endsWith(".mp4"));
