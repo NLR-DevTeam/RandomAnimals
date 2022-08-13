@@ -19,9 +19,9 @@ public class RandomFox extends JRawCommand {
 
     private RandomFox() {
         super(RandomAnimalMain.INSTANCE,"random-fox", "来只狐", "来只狐狐","来只狐狸");
-        setUsage("/random-cat"); // 设置用法，这将会在 /help 中展示
-        setDescription("随机来一只狐狐"); // 设置描述，也会在 /help 中展示
-        setPrefixOptional(true); // 设置指令前缀是可选的，即使用 `test` 也能执行指令而不需要 `/test`
+        this.setUsage("/random-fox");
+        this.setDescription("# 随机来一只狐狐");
+        this.setPrefixOptional(true);
     }
 
     @Override
