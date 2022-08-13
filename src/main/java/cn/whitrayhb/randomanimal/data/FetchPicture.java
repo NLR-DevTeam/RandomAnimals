@@ -9,6 +9,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class FetchPicture {
+    /**
+     * 下载图片
+     * @param inUrl 将要下载的图片的链接
+     * @param path 图片将要保存的位置
+     * @return 字符串，为带文件名的图片位置
+     */
     public static String fetchPicture(String inUrl,String path){
         HttpURLConnection httpUrl = null;
         String name = null;
@@ -31,11 +37,11 @@ public class FetchPicture {
             bis.close();
             httpUrl.disconnect();
         }catch (Exception e){
-            RandomAnimalMain.INSTANCE.getLogger().error("Failed to fetch picture!");
+            RandomAnimalMain.INSTANCE.getLogger().error("图片下载失败!");
             RandomAnimalMain.INSTANCE.getLogger().error(e);
             return null;
         }
-        RandomAnimalMain.INSTANCE.getLogger().info("Picture downloading is successful");
+        RandomAnimalMain.INSTANCE.getLogger().info("图片下载成功！");
         return path+"/"+name;
     }
 }

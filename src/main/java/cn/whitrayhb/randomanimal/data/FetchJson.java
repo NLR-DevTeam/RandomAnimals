@@ -9,7 +9,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class FetchJson {
-    public static String fetchJson(String inURL){//从URL拉取JSON
+    /**
+     * 拉取JSON
+     * @param inURL
+     * 将要拉取JSON的URL
+     * @return 为字符串格式的JSON
+     */
+    public static String fetchJson(String inURL){
         HttpURLConnection conn;
         InputStream is;
         BufferedReader br;
@@ -32,7 +38,7 @@ public class FetchJson {
                 }
             }
             else{
-                RandomAnimalMain.INSTANCE.getLogger().error("Exception occured with response code "+conn.getResponseCode());
+                RandomAnimalMain.INSTANCE.getLogger().error("JSON下载失败！状态码为"+conn.getResponseCode());
                 return null;
             }
         } catch (Exception e) {

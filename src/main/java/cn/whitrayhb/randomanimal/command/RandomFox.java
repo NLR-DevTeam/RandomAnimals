@@ -31,7 +31,7 @@ public class RandomFox extends JRawCommand {
         String url = FoxData.getUrl();
         String path = FetchPicture.fetchPicture(url,savePath);
         if(path==null) {
-            RandomAnimalMain.INSTANCE.getLogger().error("Image path is null");
+            RandomAnimalMain.INSTANCE.getLogger().error("图片路径为空");
             sender.sendMessage("狐狐找吃的去了……或许可以再试一次？");
             return;
         }
@@ -46,7 +46,7 @@ public class RandomFox extends JRawCommand {
                 throw new RuntimeException(e);
             }
         }else{
-            sender.sendMessage("Subject is null, don't run this command in console");
+            sender.sendMessage("请不要在控制台中运行该命令");
         }
     }
 }

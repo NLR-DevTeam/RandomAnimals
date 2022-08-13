@@ -8,10 +8,15 @@ import java.io.StringReader;
 import static cn.whitrayhb.randomanimal.data.FetchJson.fetchJson;
 
 public class CatData {
-    public static String getUrl(){//从random.cat拉取JSON并解析
+
+    /**
+     * 从thecatapi.com拉取JSON并解析
+     * @return 字符串，为猫猫图的链接
+     */
+    public static String getUrl(){//
         String json = fetchJson("https://api.thecatapi.com/v1/images/search");
         if(json==null){
-            RandomAnimalMain.INSTANCE.getLogger().error("JSON is null");
+            RandomAnimalMain.INSTANCE.getLogger().error("获取到的JSON为空");
             return null;
         }
         String URL = null;
@@ -30,10 +35,10 @@ public class CatData {
             reader.endObject();
             reader.endArray();
         }catch (Exception e){
-            RandomAnimalMain.INSTANCE.getLogger().error("Failed to decode JSON");
-            RandomAnimalMain.INSTANCE.getLogger().error(e);
+            RandomAnimalMain.INSTANCE.getLogger().error("JSON解码失败");
+            RandomAnimalMain.INSTANCE.getLogger().debug(e);
         }
-        RandomAnimalMain.INSTANCE.getLogger().info("Picture's URL is "+URL);
+        RandomAnimalMain.INSTANCE.getLogger().info("将要下载的图片地址是"+URL);
         return URL;
     }
 }

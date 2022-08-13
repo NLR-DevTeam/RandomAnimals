@@ -18,19 +18,22 @@ public class RandomCat extends JRawCommand {
 
     private RandomCat() {
         super(RandomAnimalMain.INSTANCE,"random-cat", "来只猫", "来只猫猫");
-        setUsage("/random-cat"); // 设置用法，这将会在 /help 中展示
-        setDescription("随机来一只猫猫"); // 设置描述，也会在 /help 中展示
-        setPrefixOptional(true); // 设置指令前缀是可选的，即使用 `test` 也能执行指令而不需要 `/test`
+        setUsage("/random-cat");
+        setDescription("随机来一只猫猫");
+        setPrefixOptional(true);
     }
 
     @Override
     public void onCommand(@NotNull CommandSender sender, @NotNull MessageChain args) {
         sender.sendMessage("稍等……猫猫正在跑步前进!");
-        String savePath = "./data/cn.whitrayhb.randomanimal/cache/cat";
+        /*图片保存路径*/
+        String savePath = "./data/cn.whitrayhb.randomanimal/cache/cat/";
+        /*图片链接*/
         String url = CatData.getUrl();
+        /*下载图片并获取地址*/
         String path = FetchPicture.fetchPicture(url,savePath);
         if(path==null) {
-            RandomAnimalMain.INSTANCE.getLogger().error("Image path is null");
+            RandomAnimalMain.INSTANCE.getLogger().error("图片路径为空");
             sender.sendMessage("猫猫迷路了……或许可以再试一次？");
             return;
         }
@@ -45,7 +48,7 @@ public class RandomCat extends JRawCommand {
                 throw new RuntimeException(e);
             }
         }else{
-            sender.sendMessage("Subject is null, don't run this command in console");
+            sender.sendMessage("请不要在控制台中运行该命令");
         }
     }
 }

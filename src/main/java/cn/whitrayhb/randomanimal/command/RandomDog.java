@@ -19,7 +19,7 @@ public class RandomDog extends JRawCommand {
     public static final RandomDog INSTANCE = new RandomDog();
 
     private RandomDog() {
-        super(RandomAnimalMain.INSTANCE,"random-dog", "来只狗", "来只狗勾","；来只狗狗");
+        super(RandomAnimalMain.INSTANCE,"random-dog", "来只狗", "来只狗勾","来只狗狗");
         setUsage("/random-dog"); // 设置用法，这将会在 /help 中展示
         setDescription("随机来一只狗狗"); // 设置描述，也会在 /help 中展示
         setPrefixOptional(true); // 设置指令前缀是可选的，即使用 `test` 也能执行指令而不需要 `/test`
@@ -36,7 +36,7 @@ public class RandomDog extends JRawCommand {
             url = DogData.getUrl();
             path = FetchPicture.fetchPicture(url, savePath);
             if (path == null) {
-                RandomAnimalMain.INSTANCE.getLogger().error("Image path is null");
+                RandomAnimalMain.INSTANCE.getLogger().error("图片路径为空");
                 sender.sendMessage("狗狗迷路了……或许可以再试一次？");
                 return;
             }
@@ -55,7 +55,7 @@ public class RandomDog extends JRawCommand {
                 }
             }
         }else{
-            sender.sendMessage("Subject is null, don't run this command in console");
+            sender.sendMessage("请不要在控制台中运行该命令");
         }
     }
 }
