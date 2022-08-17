@@ -33,7 +33,7 @@ public class RandomCat extends JRawCommand {
         /*下载图片并获取地址*/
         String path = FetchPicture.fetchPicture(url,savePath);
         if(path==null) {
-            RandomAnimalMain.INSTANCE.getLogger().error("图片路径为空");
+            RandomAnimalMain.INSTANCE.getLogger().error("图片路径为空，在图片获取过程中出现问题！");
             sender.sendMessage("猫猫迷路了……或许可以再试一次？");
             return;
         }

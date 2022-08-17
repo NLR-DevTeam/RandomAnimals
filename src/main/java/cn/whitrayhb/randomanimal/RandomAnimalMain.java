@@ -10,7 +10,7 @@ import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescriptionBuilder;
 public final class RandomAnimalMain extends JavaPlugin {
     public static final RandomAnimalMain INSTANCE = new RandomAnimalMain();
     private RandomAnimalMain() {
-        super(new JvmPluginDescriptionBuilder("cn.whitrayhb.randomanimal", "0.1.1")
+        super(new JvmPluginDescriptionBuilder("cn.whitrayhb.randomanimal", "0.1.2")
                 .info("EG")
                 .name("随机动物图插件")
                 .build());
