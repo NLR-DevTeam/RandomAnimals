@@ -15,3 +15,5 @@
 - 猫猫 thecatapi.com <- random.cat
 - 狗狗 random.dog
 - 狐狐 randomfox.ca
+
+（猫猫源最不稳定，若持续出现跑丢的情况请多试几次或者检查网络环境）
