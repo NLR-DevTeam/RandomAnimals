@@ -39,7 +39,7 @@ public class FetchPicture {
             httpUrl.disconnect();
         } catch (Exception e){
             RandomAnimalMain.INSTANCE.getLogger().error("图片下载失败!");
-            RandomAnimalMain.INSTANCE.getLogger().error(e.getCause());
+            RandomAnimalMain.INSTANCE.getLogger().error(e);
             return null;
         }
         RandomAnimalMain.INSTANCE.getLogger().info("图片下载成功！");
