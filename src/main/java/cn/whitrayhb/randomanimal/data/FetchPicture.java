@@ -44,5 +44,6 @@ public class FetchPicture {
         }
         RandomAnimalMain.INSTANCE.getLogger().info("图片下载成功！");
         return path+"/"+name;
+
     }
 }

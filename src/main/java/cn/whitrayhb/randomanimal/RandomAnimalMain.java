@@ -13,6 +13,7 @@ public final class RandomAnimalMain extends JavaPlugin {
         super(new JvmPluginDescriptionBuilder("cn.whitrayhb.randomanimal", "0.1.2")
                 .info("EG")
                 .name("随机动物图插件")
+                .author("WhitrayHB")
                 .build());
     }
 
