@@ -20,7 +20,7 @@ public class RandomDog extends JRawCommand {
 
     private RandomDog() {
         super(RandomAnimalMain.INSTANCE,"random-dog", "来只狗", "来只狗勾","来只狗狗");
-        this.setUsage("/random-dog"); // 设置用法，这将会在 /help 中展示
+        this.setUsage("(/)来只狗狗 #来一张狗狗图"); // 设置用法，这将会在 /help 中展示
         this.setDescription("# 随机来一只狗狗"); // 设置描述，也会在 /help 中展示
         this.setPrefixOptional(true); // 设置指令前缀是可选的，即使用 `test` 也能执行指令而不需要 `/test`
     }

@@ -18,7 +18,7 @@ public class RandomCat extends JRawCommand {
 
     private RandomCat() {
         super(RandomAnimalMain.INSTANCE,"random-cat", "来只猫", "来只猫猫");
-        this.setUsage("/random-cat");
+        this.setUsage("(/)来只猫猫 #来一张猫猫图");
         this.setDescription("# 随机来一只猫猫");
         this.setPrefixOptional(true);
     }

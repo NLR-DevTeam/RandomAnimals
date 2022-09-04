@@ -19,7 +19,7 @@ public class RandomFox extends JRawCommand {
 
     private RandomFox() {
         super(RandomAnimalMain.INSTANCE,"random-fox", "来只狐", "来只狐狐","来只狐狸");
-        this.setUsage("/random-fox");
+        this.setUsage("(/)来只狐狐 #来一张狐狐图");
         this.setDescription("# 随机来一只狐狐");
         this.setPrefixOptional(true);
     }
