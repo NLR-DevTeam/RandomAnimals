@@ -38,7 +38,6 @@ public class CatData {
             RandomAnimalMain.INSTANCE.getLogger().error("JSON解码失败");
             RandomAnimalMain.INSTANCE.getLogger().debug(e);
         }
-        RandomAnimalMain.INSTANCE.getLogger().info("将要下载的图片地址是"+URL);
         return URL;
     }
 }

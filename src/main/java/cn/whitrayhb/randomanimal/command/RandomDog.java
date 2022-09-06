@@ -34,6 +34,7 @@ public class RandomDog extends JRawCommand {
         do {
             savePath = "./data/cn.whitrayhb.randomanimal/cache/dog";
             url = DogData.getUrl();
+            RandomAnimalMain.INSTANCE.getLogger().info("将要下载的图片地址是"+url);
             path = FetchPicture.fetchPicture(url, savePath);
             if (path == null) {
                 RandomAnimalMain.INSTANCE.getLogger().error("图片路径为空");
@@ -43,16 +44,13 @@ public class RandomDog extends JRawCommand {
         }while(url.endsWith(".mp4"));
         File file = new File(path);
         if(sender.getSubject()!=null) {
-            if(url.endsWith(".mp4")) ;
-            else{
-                ExternalResource resource = ExternalResource.create(file);
-                Image image = sender.getSubject().uploadImage(resource);
-                sender.sendMessage(image);
-                try {
-                    resource.close();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+            ExternalResource resource = ExternalResource.create(file);
+            Image image = sender.getSubject().uploadImage(resource);
+            sender.sendMessage(image);
+            try {
+                resource.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         }else{
             sender.sendMessage("请不要在控制台中运行该命令");

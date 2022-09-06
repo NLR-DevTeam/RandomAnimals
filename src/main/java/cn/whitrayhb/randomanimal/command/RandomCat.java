@@ -29,7 +29,9 @@ public class RandomCat extends JRawCommand {
         /*图片保存路径*/
         String savePath = "./data/cn.whitrayhb.randomanimal/cache/cat/";
         /*图片链接*/
-        String url = CatData.getUrl();
+        String[] arrUrl = CatData.getUrl().split("/");
+        String url = "https://static.jks.life/cat/images/" + arrUrl[arrUrl.length-1];
+        RandomAnimalMain.INSTANCE.getLogger().info("将要下载的图片地址是"+url);
         /*下载图片并获取地址*/
         String path = FetchPicture.fetchPicture(url,savePath);
         if(path==null) {

@@ -28,7 +28,9 @@ public class RandomFox extends JRawCommand {
     public void onCommand(@NotNull CommandSender sender, @NotNull MessageChain args) {
         sender.sendMessage("稍等……狐狐正在跑步前进!");
         String savePath = "./data/cn.whitrayhb.randomanimal/cache/fox";
-        String url = FoxData.getUrl();
+        //Powered by AkibaSo/SamukawaUI
+        String url = "https://static.jks.life/fox/images/"+ (int) Math.ceil(Math.random() * 123)+".jpg";
+        RandomAnimalMain.INSTANCE.getLogger().info("将要下载的图片地址是"+url);
         String path = FetchPicture.fetchPicture(url,savePath);
         if(path==null) {
             RandomAnimalMain.INSTANCE.getLogger().error("图片路径为空");

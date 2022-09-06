@@ -7,6 +7,7 @@ import java.io.StringReader;
 
 import static cn.whitrayhb.randomanimal.data.FetchJson.fetchJson;
 
+@Deprecated
 public class FoxData {
     /**
      * 从randomfox.ca拉取JSON并解析
