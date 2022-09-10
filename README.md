@@ -15,4 +15,8 @@
 - 狗狗 random.dog
 - 狐狐 randomfox.ca(AkibaSo镜像站) <- randomfox.ca
 
-### 特别鸣谢：[AkibaSo](https://2890.ltd)
+## 配置文件
+RandomAnimal.yml
+- dooldown:cd时长，默认为15（单位为s），设为-1关闭cd
+
+### 特别鸣谢：[AkibaSo](https://2890.ltd)提供反代
