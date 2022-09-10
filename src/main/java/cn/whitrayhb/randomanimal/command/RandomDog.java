@@ -1,10 +1,13 @@
 package cn.whitrayhb.randomanimal.command;
 
 import cn.whitrayhb.randomanimal.RandomAnimalMain;
+import cn.whitrayhb.randomanimal.config.PluginConfig;
 import cn.whitrayhb.randomanimal.data.CatData;
 import cn.whitrayhb.randomanimal.data.DogData;
 import cn.whitrayhb.randomanimal.data.FetchPicture;
+import cn.whitrayhb.randomanimal.util.Cooler;
 import net.mamoe.mirai.console.command.CommandSender;
+import net.mamoe.mirai.console.command.ConsoleCommandSender;
 import net.mamoe.mirai.console.command.java.JRawCommand;
 import net.mamoe.mirai.message.data.Image;
 import net.mamoe.mirai.message.data.MessageChain;
@@ -13,6 +16,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 public class RandomDog extends JRawCommand {
 
@@ -27,6 +31,13 @@ public class RandomDog extends JRawCommand {
 
     @Override
     public void onCommand(@NotNull CommandSender sender, @NotNull MessageChain args) {
+        if(!(sender instanceof ConsoleCommandSender)){
+            if (Cooler.isLocked(Objects.requireNonNull(sender.getUser()).getId())) {
+                sender.sendMessage("操作太快了，请稍后再试");
+                return;
+            }
+            Cooler.lock(sender.getUser().getId(), PluginConfig.RandomAnimal.INSTANCE.getCooldown());
+        }
         sender.sendMessage("稍等……狗狗正在跑步前进!");
         String savePath;
         String url;
