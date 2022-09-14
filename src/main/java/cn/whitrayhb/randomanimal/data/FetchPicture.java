@@ -21,6 +21,8 @@ public class FetchPicture {
         int size;
         String[] arrUrl = inUrl.split("/");
         String name = arrUrl[arrUrl.length-1];
+        File file1 = new File(path);
+        if(!file1.exists()) file1.mkdirs();
         if(new File(path+"/"+name).exists()){
             return path+"/"+name;
         }
