@@ -1,6 +1,7 @@
 ## 随机动物图片插件
 
-提供一些动物图片，目前支持
+提供一些动物图片，目前支持  
+项目已重写 请前往 [RandomAnimals Rewrite 项目](https://github.com/NLR-DevTeam/RandomAnimalsRewrite)
 
 - 来只猫猫(random-cat/来只猫)
 
